@@ -1,8 +1,6 @@
 # 🧬 PhD Thesis Repository
 
-## **Transcriptional dynamics of the flower–fruit transition in *Vanilla planifolia* Andrews (Orchidaceae):
-
-A molecular phenology and co-expression network approach**
+## Transcriptional dynamics of the flower–fruit transition in *Vanilla planifolia* Andrews (Orchidaceae): A molecular phenology and co-expression network approach
 
 ---
 
@@ -77,7 +75,7 @@ Each directory represents one step:
 
 ## 👩‍🔬 Author
 Olga Andrea Hernández Miranda
-PhD candidate in Biologicas Sciences in Experimental Biology
+PhD candidate in Biological Sciences in Experimental Biology
 
 ---
 <img width="1498" height="524" alt="image" src="https://github.com/user-attachments/assets/be3a1f62-8439-40fe-81ad-e71b245ed461" />
