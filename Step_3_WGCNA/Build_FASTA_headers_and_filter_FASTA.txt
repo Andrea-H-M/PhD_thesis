@@ -1,0 +1,177 @@
+##################################################################################################
+## Topic: Build exact FASTA headers + filter FASTA from a gene list (base tokens, optional .p1) ##
+## Author: Olga Andrea Hernandez Miranda (Miranda H)                                            ##
+## Date: 25/08/2025                                                                             ##
+## Language: Perl                                                                               ##
+##                                                                                              ##
+## Description:                                                                                 ##
+## This script:                                                                                 ##
+##  (1) Reads a list of gene/protein IDs (optionally containing ">" and/or ".p#").              ##
+##  (2) Normalizes IDs to "base tokens" (removes leading ">" and trailing ".p#").               ##
+##  (3) Scans a FASTA file and keeps sequences whose header's first token matches the list.     ##
+##  (4) Writes:                                                                                 ##
+##      - filtered FASTA                                                                        ##
+##      - a file with the exact (full) headers found (unique)                                   ##
+##      - a file with list entries missing from the FASTA                                       ##
+##  (5) Optionally, keeps only isoforms ending in ".p1".                                        ##
+##                                                                                              ##
+## Usage (PowerShell/CMD, inside the folder with files):                                        ##
+##   perl build_headers_and_filter_from_list.pl ^                                               ##
+##     --fasta   Vanilla.fa ^                                                                   ##
+##     --list    Lista_brown.txt ^                                                              ##
+##     --exact   Headers_brown_exact.txt ^                                                      ##
+##     --out     Brown_filtrado.fa ^                                                            ##
+##     --missing missing_from_list.txt ^                                                        ##
+##     --only_p1                                                                                ##
+##################################################################################################
+
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use Getopt::Long;
+
+# ==============================================================================================
+# [1] DEFAULT PARAMETERS
+# ==============================================================================================
+
+my $fasta   = "Vanilla.fa";
+my $list    = "Lista_brown.txt";
+my $exact   = "Headers_brown_exact.txt";
+my $out     = "Brown_filtrado.fa";
+my $miss    = "missing_from_list.txt";
+my $only_p1 = 0;
+
+GetOptions(
+  "fasta=s"   => \$fasta,
+  "list=s"    => \$list,
+  "exact=s"   => \$exact,
+  "out=s"     => \$out,
+  "missing=s" => \$miss,
+  "only_p1!"  => \$only_p1,
+) or die "Error parsing options.\n";
+
+# ==============================================================================================
+# [2] READ LIST AND BUILD BASE TOKENS (order preserved, unique)
+# ==============================================================================================
+
+open my $L, "<:encoding(UTF-8)", $list
+  or die "Cannot open $list: $!";
+
+my @order;      # ordered unique base tokens
+my %want_base;  # base token set
+my %seen;       # to preserve first occurrence
+
+while (my $line = <$L>) {
+  $line =~ s/^\x{FEFF}//;      # remove BOM if present
+  chomp $line; $line =~ s/\r$//;
+  next unless $line =~ /\S/;
+
+  # Normalize line: remove leading '>', take first token (space or '|'), remove trailing .p#
+  $line =~ s/^>//;
+  my ($tok) = split /[ \t\|]/, $line;
+  $tok =~ s/\.p\d+$//i;
+
+  next if $tok eq '';
+
+  unless ($seen{$tok}++) {
+    push @order, $tok;
+    $want_base{$tok} = 1;
+  }
+}
+close $L;
+
+# ==============================================================================================
+# [3] SCAN FASTA: FILTER + COLLECT EXACT HEADERS
+# ==============================================================================================
+
+open my $IN,  "<:encoding(UTF-8)", $fasta
+  or die "Cannot open $fasta: $!";
+open my $OUT, ">:encoding(UTF-8)", $out
+  or die "Cannot write $out: $!";
+
+my %found_base;                 # base tokens found in FASTA
+my %exact_seen; my @exact_list; # unique full headers (without '>')
+my $keep = 0;
+my $total_headers = 0;
+
+while (my $line = <$IN>) {
+  $line =~ s/^\x{FEFF}//;
+
+  if ($line =~ /^>/) {
+    $total_headers++;
+    chomp $line; $line =~ s/\r$//;
+
+    my $hdr_no_gt = substr($line, 1);
+
+    # First token of header (before whitespace or '|')
+    my ($first_tok) = split /[ \t\|]/, $hdr_no_gt;
+
+    # Base token = first token without isoform suffix .p#
+    my $base = $first_tok;
+    $base =~ s/\.p\d+$//i;
+
+    # Decide whether to keep this record
+    $keep = 0;
+    if ($want_base{$base}) {
+      if ($only_p1) {
+        $keep = ($first_tok =~ /\.p1$/i) ? 1 : 0;
+      } else {
+        $keep = 1;
+      }
+    }
+
+    if ($keep) {
+      $found_base{$base} = 1;
+
+      unless ($exact_seen{$hdr_no_gt}++) {
+        push @exact_list, $hdr_no_gt;
+      }
+
+      print $OUT $line, "\n";
+    }
+
+  } else {
+    print $OUT $line if $keep;
+  }
+}
+
+close $IN;
+close $OUT;
+
+# ==============================================================================================
+# [4] WRITE: EXACT HEADERS + MISSING TOKENS
+# ==============================================================================================
+
+open my $EX, ">:encoding(UTF-8)", $exact
+  or die "Cannot write $exact: $!";
+print $EX join("\n", @exact_list), "\n" if @exact_list;
+close $EX;
+
+open my $MS, ">:encoding(UTF-8)", $miss
+  or die "Cannot write $miss: $!";
+
+my $missing_count = 0;
+for my $b (@order) {
+  unless ($found_base{$b}) {
+    print $MS $b, "\n";
+    $missing_count++;
+  }
+}
+close $MS;
+
+# ==============================================================================================
+# [5] SUMMARY (STDERR)
+# ==============================================================================================
+
+my $wanted_n = scalar @order;
+my $exact_n  = scalar @exact_list;
+
+warn "[SUMMARY]\n";
+warn "  Tokens in list (base, no .p#):  $wanted_n\n";
+warn "  FASTA headers scanned:          $total_headers\n";
+warn "  Headers written (kept records): $exact_n\n";
+warn "  Missing from list:              $missing_count\n";
+warn "  Output files:\n";
+warn "    - Exact headers : $exact\n";
+warn "    - Filtered FASTA: $out\n";
+warn "    - Missing list  : $miss\n";
