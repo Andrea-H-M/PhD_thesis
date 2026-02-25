@@ -76,9 +76,8 @@ Each directory represents one step:
 ---
 
 ## 👩‍🔬 Author
-
-Olga Andrea Hernandez Miranda
-PhD in Plant Molecular Biology & Bioinformatics
+Olga Andrea Hernández Miranda
+PhD in Biologicas Sciences in Experimental Biology
 
 ---
 <img width="1498" height="524" alt="image" src="https://github.com/user-attachments/assets/be3a1f62-8439-40fe-81ad-e71b245ed461" />
