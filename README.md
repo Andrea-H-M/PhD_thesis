@@ -72,6 +72,27 @@ Each directory represents one step:
 ```
 
 ---
+## 📄 Articles derived from this thesis
+
+Transcriptomic analysis reveals molecular phenological changes during the flower-to-fruit transition in Vanilla planifolia Andrews (Orchidaceae)
+https://link.springer.com/article/10.1186/s12870-025-06476-z
+
+---
+
+## 📦 Generated databases
+Flower-to-Fruit Transition Transcriptome of Vanilla planifolia: Differential Expression, TPM Values, and Functional Annotation Dataset
+https://doi.org/10.5281/zenodo.18765805
+
+Flower-to-Fruit Transition Regulatory Transcriptome of Vanilla planifolia: Transcription Factors and Epigenetic Regulators Dataset
+https://doi.org/10.5281/zenodo.18795163
+
+Comparative Dataset of Differentially Expressed Genes and Conserved Orthologs During the Flower-to-Fruit Transition in Angiosperms
+https://doi.org/10.5281/zenodo.18795437
+
+Candidate Gene Dataset for the Post-Pollination Syndrome in Vanilla planifolia Identified Through Integrated Structural and Functional Transcriptome Labels
+https://doi.org/10.5281/zenodo.18795618
+
+---
 
 ## 👩‍🔬 Author
 Olga Andrea Hernández Miranda
