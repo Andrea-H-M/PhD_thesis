@@ -77,6 +77,9 @@ Each directory represents one step:
 Transcriptomic analysis reveals molecular phenological changes during the flower-to-fruit transition in Vanilla planifolia Andrews (Orchidaceae)
 https://link.springer.com/article/10.1186/s12870-025-06476-z
 
+Systems-level transcriptomics reveals regulatory network and candidate genes behind postpollination syndrome in vanilla (Manuscript under peer review)
+
+
 ---
 
 ## 📦 Generated databases
