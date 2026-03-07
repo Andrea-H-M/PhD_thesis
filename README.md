@@ -78,4 +78,5 @@ Olga Andrea Hernández Miranda
 PhD candidate in Biological Sciences in Experimental Biology
 
 ---
-<img width="1498" height="524" alt="image" src="https://github.com/user-attachments/assets/be3a1f62-8439-40fe-81ad-e71b245ed461" />
+<img width="5079" height="1773" alt="image" src="https://github.com/user-attachments/assets/3831c9f0-a1ef-4447-a230-360bb97b78a7" />
+
