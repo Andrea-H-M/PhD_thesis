@@ -95,6 +95,12 @@ https://doi.org/10.5281/zenodo.18795437
 Candidate Gene Dataset for the Post-Pollination Syndrome in Vanilla planifolia Identified Through Integrated Structural and Functional Transcriptome Labels
 https://doi.org/10.5281/zenodo.18795618
 
+De novo assembled transcriptome and predicted proteins of Vanilla planifolia during the flower-to-fruit transition https://doi.org/10.5281/zenodo.18916399 
+
+Workflow for in silico identification of candidate genes through coexpression network analysis during the flower-to-fruit transition in Vanilla planifolia https://doi.org/10.5281/zenodo.19896634
+
+Supplementary datasets for: Dinámica transcripcional de la transición de flor a fruto en Vanilla planifolia Andrews (Orchidaceae): una aproximación desde la fenología molecular y las redes de coexpresión https://doi.org/10.5281/zenodo.19897991
+
 ---
 
 ## 👩‍🔬 Author
