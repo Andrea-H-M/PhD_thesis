@@ -82,7 +82,7 @@ Systems-level transcriptomics reveals regulatory network and candidate genes beh
 
 ---
 
-## 📦 Generated databases
+## 📦 Research Outputs
 Flower-to-Fruit Transition Transcriptome of Vanilla planifolia: Differential Expression, TPM Values, and Functional Annotation Dataset
 https://doi.org/10.5281/zenodo.18765805
 
