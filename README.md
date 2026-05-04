@@ -72,10 +72,41 @@ Each directory represents one step:
 ```
 
 ---
+## 📄 Articles derived from this thesis
+
+Transcriptomic analysis reveals molecular phenological changes during the flower-to-fruit transition in Vanilla planifolia Andrews (Orchidaceae)
+https://link.springer.com/article/10.1186/s12870-025-06476-z
+
+Systems-level transcriptomics reveals regulatory network and candidate genes behind postpollination syndrome in vanilla (Manuscript under peer review)
+
+
+---
+
+## 📦 Research Outputs
+Flower-to-Fruit Transition Transcriptome of Vanilla planifolia: Differential Expression, TPM Values, and Functional Annotation Dataset
+https://doi.org/10.5281/zenodo.18765805
+
+Flower-to-Fruit Transition Regulatory Transcriptome of Vanilla planifolia: Transcription Factors and Epigenetic Regulators Dataset
+https://doi.org/10.5281/zenodo.18795163
+
+Comparative Dataset of Differentially Expressed Genes and Conserved Orthologs During the Flower-to-Fruit Transition in Angiosperms
+https://doi.org/10.5281/zenodo.18795437
+
+Candidate Gene Dataset for the Post-Pollination Syndrome in Vanilla planifolia Identified Through Integrated Structural and Functional Transcriptome Labels
+https://doi.org/10.5281/zenodo.18795618
+
+De novo assembled transcriptome and predicted proteins of Vanilla planifolia during the flower-to-fruit transition https://doi.org/10.5281/zenodo.18916399 
+
+Workflow for in silico identification of candidate genes through coexpression network analysis during the flower-to-fruit transition in Vanilla planifolia https://doi.org/10.5281/zenodo.19896634
+
+Supplementary datasets for: Dinámica transcripcional de la transición de flor a fruto en Vanilla planifolia Andrews (Orchidaceae): una aproximación desde la fenología molecular y las redes de coexpresión https://doi.org/10.5281/zenodo.19897991
+
+---
 
 ## 👩‍🔬 Author
 Olga Andrea Hernández Miranda
 PhD candidate in Biological Sciences in Experimental Biology
 
 ---
-<img width="1498" height="524" alt="image" src="https://github.com/user-attachments/assets/be3a1f62-8439-40fe-81ad-e71b245ed461" />
+<img width="5079" height="1773" alt="image" src="https://github.com/user-attachments/assets/3831c9f0-a1ef-4447-a230-360bb97b78a7" />
+
